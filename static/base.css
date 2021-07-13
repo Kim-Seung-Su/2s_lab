@@ -1,0 +1,22 @@
+.Engineering_header_all{
+    text-align : center;
+}
+
+.Engineering_header_1{
+    font-family: 'Otomanopee One', cursive;
+    margin: 2rem 0;
+}
+
+.Engineering_header_2{
+    font-size: .5rem;
+    margin: 2rem 0;
+}
+
+.Engineering_footer_all{
+    text-align: center;
+
+}
+.Engineering_footer_1{
+    font-size: 0.5rem;
+    margin: 2rem 0;
+}

@@ -1,14 +1,24 @@
-<div style="text-align : center">
+<div class = "Engineering_header_all">
 
-    <div class ="Engineering_header_logo">
+    <div class = "Engineering_header_1">
         <h1>SELF Engineering</h1>
     </div>
 
 
-    <div class = "Engineering_header_button">
+    <div class = "Engineering_header_2">
         <span>nav1</span>
         <span>nav2</span>
-        <span>nav3</span>
+
+        <span>
+            <a href = "{% url 'accountapp:login' %}">
+                Log in
+            </a>
+        </span>
+        <span>
+            <a href = "{% url 'accountapp:create' %}">
+                Sign up
+            </a>
+        </span>
     </div>
 
 
