@@ -8,6 +8,7 @@
     <div class = "Engineering_header_2">
         <span>nav1</span>
         <span>nav2</span>
+        {% if not user.is_authenticated%}  <!--로그인 했을시에는 로그아웃,-->
 
         <span>
             <a href = "{% url 'accountapp:login' %}">
@@ -19,6 +20,13 @@
                 Sign up
             </a>
         </span>
+        {% else %}
+        <span>
+            <a href = "{% url 'accountapp:logout' %}">
+
+            </a>
+        </span>
+        {% endif %}
     </div>
 
 
