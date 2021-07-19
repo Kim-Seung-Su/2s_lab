@@ -7,11 +7,17 @@
         <div>
             {{ target_user.date_joined }}
         </div>
+        {% if user == target_user %}
         <div>
             <a href= "{% url 'accountapp:update' pk=target_user.pk %}">
             Update Info
             </a> <!--pk 고유값?-->
 
+            <a href= "{% url 'accountapp:delete' pk=target_user.pk %}">
+            Quit
+            </a>
+
         </div>
+        {% endif %}
     </div>
 {% endblock %}
