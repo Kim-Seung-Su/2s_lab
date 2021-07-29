@@ -52,7 +52,6 @@ class AccountUpdateView(UpdateView):
     model = User
     form_class = AccountCreationForm
     context_object_name = 'target_user'
-    success_url = reverse_lazy('accountapp:hello_world') #수정성공 후 다시 되돌아 갈 곳 필요
     template_name = 'accountapp/update.html'
 
     def get_success_url(self):
