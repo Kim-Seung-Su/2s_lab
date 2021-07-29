@@ -39,7 +39,7 @@
 .round_button{
     color : black;
     text-decoration: none;
-    box-shadow: 0 0 3px black;
+    box-shadow: 0 0 3px black; <!-- x,y 좌표 -->
     border-radius: 10rem;
     padding : .3rem;
 }
