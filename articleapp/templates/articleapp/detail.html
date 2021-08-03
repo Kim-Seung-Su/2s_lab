@@ -12,8 +12,9 @@
 
         <div>
             {# 게시글 대표이미지, 글 내용 #}
-            <img src="{{ target_article.image_url }}" alt="">
+            <img src="{{ target_article.image.url }}" alt="">
             {{ target_article.content }}
         </div>
     </div>
 {% endblock %}
+
