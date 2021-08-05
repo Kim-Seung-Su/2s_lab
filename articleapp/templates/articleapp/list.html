@@ -12,6 +12,7 @@
       justify-content: center;
       align-items: center;
       border-radius: 1rem;
+        flex-direction: column;
     }
 
     .container img{
@@ -36,38 +37,37 @@
             <img src = "https://picsum.photos/200/299" alt = "">
         </div>
         <div class="item4">
-            <img src = "https://picsum.photos/200/855" alt = "">
+            <img src = "https://picsum.photos/200/300" alt = "">
         </div>
         <div class="item5">
-            <img src = "https://picsum.photos/200/500" alt = "">
+            <img src = "https://picsum.photos/200/300" alt = "">
         </div>
-        <div class="item6">
-            <img src = "https://picsum.photos/200/394" alt = "">
-        </div>
-        <div class="item7">
-            <img src = "https://picsum.photos/200/360" alt = "">
-        </div>
-        <div class="item8">
-            <img src = "https://picsum.photos/200/600" alt = "">
-        </div>
-        <div class="item9">
-            <img src = "https://picsum.photos/200/256" alt = "">
-        </div>
-        <div class="item10">
-            <img src = "https://picsum.photos/200/395" alt = "">
-        </div>
-        <div class="item11">
-            <img src = "https://picsum.photos/200/480" alt = "">
-        </div>
-        <div class="item12">
-            <img src = "https://picsum.photos/200/123" alt = "">
-        </div>
-        <div class="item13">
-            <img src = "https://picsum.photos/200/385" alt = "">
-        </div>
+
+        {% for article in article_list %}
+
+            <div>
+                <a href = "{% url 'articleapp:detail' pk=article.pk %}">
+                    <img src = "{{ article.image.url }}" alt="">
+                </a>
+                <span>{{ article.title }}</span>
+            </div>
+        {% endfor %}
+
     </div>
+
 
     <script src = "{% static 'js/magicgreed.js' %}"></script>
 
+
+    <div class = "text-center">
+        <a href="{% url 'articleapp:create' %}"
+           class = 'btn btn-dark rounded-pill material-icons'>
+            brush
+        </a>
+        <a href="{% url 'articleapp:create' %}"
+           class = 'btn btn-outline-dark rounded-pill' px-5>
+            Create Article
+        </a>
+    </div>
 {% endblock %}
 

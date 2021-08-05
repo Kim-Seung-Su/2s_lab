@@ -32,7 +32,7 @@
     border-radius: 20rem;
     object-fit: cover;
 }
-.NMS_B{
+.NNS_B{
     font-family: "NanumSquareB", cursive;
 }
 
@@ -46,4 +46,16 @@
 
 .round_button:hover{
     color : greenyellow;
+}
+
+.article_image{
+    border-radius: 2rem;
+    width: 50%;
+    box-shadow: 0 0 .5rem grey;
+}
+
+.article_content{
+    font-size: 1.1rem;
+    text-align: left;
+    margin: 2rem;
 }
