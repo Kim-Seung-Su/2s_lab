@@ -23,29 +23,9 @@
 
 </style>
 
-    <div class="container my-4">
-        <div class = 'item1'>
-             <img src = "https://picsum.photos/200/300" alt = "">
-        </div>
-        <div class="item1">
-            <img src = "https://picsum.photos/200/156" alt = "">
-        </div>
-        <div class="item2">
-            <img src = "https://picsum.photos/200/258" alt = "">
-        </div>
-        <div class="item3">
-            <img src = "https://picsum.photos/200/299" alt = "">
-        </div>
-        <div class="item4">
-            <img src = "https://picsum.photos/200/300" alt = "">
-        </div>
-        <div class="item5">
-            <img src = "https://picsum.photos/200/300" alt = "">
-        </div>
-
         {% for article in article_list %}
 
-            <div>
+            <div style="text-align: center">
                 <a href = "{% url 'articleapp:detail' pk=article.pk %}">
                     <img src = "{{ article.image.url }}" alt="">
                 </a>
