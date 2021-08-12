@@ -34,5 +34,5 @@ class CommentDeleteView(DeleteView):
     context_object_name = 'target_comment'
     template_name = 'commentapp/delete.html'
 
-    def gdt_success_url(self):
+    def get_success_url(self):
         return reverse('articleapp:detail', kwargs={'pk': self.object.article.pk})
