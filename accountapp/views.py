@@ -8,10 +8,12 @@ from django.shortcuts import render
 from django.urls import reverse, reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
+from django.views.generic.list import MultipleObjectMixin
 
 from accountapp.decorator import account_ownership_required
 from accountapp.forms import AccountCreationForm
 from accountapp.models import HelloWorld
+from articleapp.models import Article
 
 
 @login_required(login_url=reverse_lazy('accountapp:login'))
@@ -31,7 +33,6 @@ def hello_world(request):
         return render(request, 'accountapp/hello_world.html', context={'hello_world_list' : hello_world_list})
 
 
-
 class AccountCreateView(CreateView):
     model = User
     form_class = UserCreationForm
@@ -39,12 +40,20 @@ class AccountCreateView(CreateView):
     template_name = 'accountapp/create.html'
 
 
-class AccountDetailView(DetailView):
+class AccountDetailView(DetailView,MultipleObjectMixin):
     model = User
     context_object_name = 'target_user'   #객체를 html상에서 어떻게 부를 것인지.
     template_name = 'accountapp/detail.html'
 
+    paginate_by = 20
+
+    def get_context_data(self, **kwargs):
+        article_list = Article.objects.filter(writer=self.object)
+        return super().get_context_data(object_list=article_list, **kwargs)
+
+
 has_ownership = [login_required, account_ownership_required]
+
 
 @method_decorator(has_ownership, 'get')
 @method_decorator(has_ownership, 'post')
