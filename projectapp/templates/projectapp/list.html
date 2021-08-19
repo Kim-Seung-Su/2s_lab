@@ -36,7 +36,7 @@
                 <a href = "{% url 'projectapp:detail' pk=project.pk %}">
                     <img src = "{{ project.image.url }}" alt="">
                 </a>
-                <span>{{ project.name }}</span>
+                <span class = 'm-2 NMS-B'>{{ project.name | truncatechars:10 }}</span>
             </div>
         {% endfor %}
 
