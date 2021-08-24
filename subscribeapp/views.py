@@ -1,12 +1,10 @@
-from msilib.schema import ListView
-
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 
 # Create your views here.
 from django.urls import reverse
 from django.utils.decorators import method_decorator
-from django.views.generic import RedirectView
+from django.views.generic import RedirectView, ListView
 
 from articleapp.models import Article
 from projectapp.models import Project
@@ -44,4 +42,5 @@ class SubscriptionListView(ListView):
     def get_queryset(self):
         project_list = Subscription.objects.filter(user=self.request.user).values_list('project')
         article_list = Article.objects.filter(project__in=project_list)
+
         return article_list

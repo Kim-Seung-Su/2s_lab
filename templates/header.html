@@ -1,24 +1,11 @@
 <div class = "Engineering_header_all">
 
     <div class = "Engineering_header_1">
-        <h1>SELF Engineering</h1>
+        <h1>Self Engineering</h1>
     </div>
 
 
     <div class = "Engineering_header_2">
-        {% if not user.is_authenticated%}  <!--로그인 했을시에는 로그아웃,-->
-        <span>
-            <a href = "{% url 'accountapp:login' %}">
-                Log in
-            </a>
-        </span>
-        <span>
-            <a href = "{% url 'accountapp:create' %}">
-                Sign up
-            </a>
-        </span>
-
-        {% else %}
         <span>
             <a href = "{% url 'articleapp:list' %}">
                 Articles
@@ -35,6 +22,21 @@
                 Subscription
             </a>
         </span>
+        {% endif %}
+
+
+        {% if not user.is_authenticated%}  <!--로그인 했을시에는 로그아웃,-->
+        <span>
+            <a href = "{% url 'accountapp:login' %}">
+                Log in
+            </a>
+        </span>
+        <span>
+            <a href = "{% url 'accountapp:create' %}">
+                Sign up
+            </a>
+        </span>
+        {% else %}
         <span>
             <a href = "{% url 'accountapp:detail' pk=user.pk %}">
                 My page
