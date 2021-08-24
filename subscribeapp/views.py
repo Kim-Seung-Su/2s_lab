@@ -13,8 +13,6 @@ from projectapp.models import Project
 from subscribeapp.models import Subscription
 
 
-
-
 @method_decorator(login_required, 'get')
 class SubscriptionView(RedirectView):
 
@@ -22,7 +20,7 @@ class SubscriptionView(RedirectView):
         user = request.user
         project = Project.objects.get(pk=kwargs['project_pk'])
 
-        subscription = Subscription.objects.filter(user=user,project=project)
+        subscription = Subscription.objects.filter(user=user, project=project)
 
         if subscription.exists():
             subscription.delete()
@@ -35,6 +33,7 @@ class SubscriptionView(RedirectView):
         return reverse('projectapp:detail', kwargs={'pk':kwargs['project_pk']})
 
 
+@method_decorator(login_required, 'get')
 class SubscriptionListView(ListView):
     model = Article
     context_object_name = 'article_list'
