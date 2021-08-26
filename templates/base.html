@@ -11,8 +11,8 @@
 
 {% for message in messages %}
     <div class="text-center">
-        <div class="'btn btn-sucess rounded-pill px-5">
-        {{ message }}
+        <div class="btn btn-{{ message.tags }} rounded-pill px-5">
+            {{ message }}
         </div>
     </div>
 {% endfor %}
