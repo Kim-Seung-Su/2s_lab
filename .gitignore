@@ -62,3 +62,7 @@ __pycache__/
 /db_backup.sqlite3
 media/
 staticfiles/
+gis_kss.pem
+
+gis_kss_gcp
+gis_kss_gcp.pub
