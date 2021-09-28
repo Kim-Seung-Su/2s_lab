@@ -1,0 +1,62 @@
+version: "3.7"
+
+services:
+
+  nginx:
+    image: nginx:1.19.5
+    ports:
+      - 80:80
+    networks:
+      - kss_network
+    volumes:
+      - /home/ubuntu/nginx.conf:/etc/nginx/nginx.conf
+      - kss_5ban_static:/data/static/
+      - kss_5ban_media:/data/media/
+
+  django:
+    image: kss_django:4
+    networks:
+      - kss_network
+    volumes:
+      - kss_5ban_static:/home/2s_lab/staticfiles/
+      - kss_5ban_media:/home/2s_lab/media/
+    secrets:
+      - DJANGO_SECRET_KEY
+      - MARIADB_PASSWORD
+      - MARIADB_USER
+
+  mariadb:
+    image: mariadb:10.5
+    networks:
+      - kss_network
+    volumes:
+      - kss_mariadb:/var/lib/mysql
+    secrets:
+      - MARIADB_PASSWORD
+      - MARIADB_USER
+      - MARIADB_ROOT_PASSWORD
+    environment:
+      MARIADB_ROOT_PASSWORD: password0000
+      MARIADB_DATABASE: django
+      MARIADB_USER: django
+      MARIADB_PASSWORD: password0000
+
+
+
+networks:
+  kss_network:
+
+volumes:
+  kss_5ban_static:
+  kss_5ban_media:
+  kss_mariadb:
+
+secrets:
+  DJANGO_SECRET_KEY:
+    external: true
+  MARIADB_ROOT_PASSWORD:
+    external: true
+  MARIADB_PASSWORD:
+    external: true
+  MARIADB_USER:
+    external: true
